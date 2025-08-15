@@ -1,5 +1,5 @@
-variable "docker_name" {
-  default = "Docker"
+variable "jenkins_name" {
+  default = "Jenkins"
 }
 
 variable "project" {
