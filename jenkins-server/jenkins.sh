@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 # Resize the root and var logical volumes and file systems
 growpart /dev/nvme0n1 4
 lvextend -L +20G /dev/RootVG/rootVol
