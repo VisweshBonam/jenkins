@@ -20,4 +20,15 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'I will always say Hello'
+        }
+        success {
+            echo 'Hello'
+        }
+        failure {
+            echo 'Hello, this will run only if the pipeline fails'
+        }
+    }
 }
