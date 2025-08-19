@@ -26,7 +26,7 @@ pipeline {
             cleanWs()
         }
         success {
-            echo 'Hello'
+            echo 'Hello,I will run only if the pipeline is successful'
         }
         failure {
             echo 'Hello, this will run only if the pipeline fails'
