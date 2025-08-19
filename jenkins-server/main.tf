@@ -13,7 +13,7 @@ resource "aws_instance" "jenkins-master" {
   tags = {
     Name = "${var.project}-${var.environment}-${var.jenkins_name}"
   }
-  
+
 }
 
 resource "aws_security_group" "jenkins_allow_all" {
@@ -39,4 +39,12 @@ resource "aws_security_group" "jenkins_allow_all" {
   tags = {
     Name = "jenkins_sg"
   }
+}
+
+resource "aws_route53_record" "jenkins-record" {
+  zone_id = var.zone_id
+  type    = "A"
+  ttl     = "1"
+  records = [aws_instance.jenkins-master.public_ip]
+  name    = "jenkins-master.${var.environment}.${var.zone_name}" # jenkins-master.dev.liveyourlife.site
 }
