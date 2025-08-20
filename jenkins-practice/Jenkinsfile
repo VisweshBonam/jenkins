@@ -9,6 +9,7 @@ pipeline {
 
     options {
         timeout(time:1, unit:'SECONDS') // setting a timeout for the entire pipeline, if it exceeds 1 second, it will be aborted
+        buildDiscarder(logRotator(numToKeepStr: '5')) // keep the last 5 builds
     }
 
     stages {
