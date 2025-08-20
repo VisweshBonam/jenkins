@@ -10,8 +10,10 @@ pipeline {
         stage('Build') {
             steps {
                 script{ // using script block to run a Groovy script
-                    echo 'Building..'
-                    echo "The app_env is set to ${app_env}" // accessing the environment variable
+                    sh """
+                        echo 'Building..'
+                        echo "The app_env is set to ${app_env}"
+                    """
                 }
             }
         }
