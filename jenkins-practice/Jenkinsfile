@@ -1,18 +1,22 @@
 pipeline {
     agent {
-        label 'AGENT-1'
+        label 'AGENT-1'  // run this job on the agent with label AGENT-1
+    }
+    environment {
+        app_env = 'dev' // setting an environment variable app_env with value 'dev'
     }
 
     stages {
         stage('Build') {
             steps {
-                script{
+                script{ // using script block to run a Groovy script
                     echo 'Building..'
+                    env
                 }
             }
         }
         stage('Test') {
-            steps {
+            steps { // steps block contains the actual commands to be executed in this stage, we can include one or more steps in a stage
                 echo 'Testing..'
             }
         }
@@ -22,15 +26,15 @@ pipeline {
             }
         }
     }
-    post {
-        always {
+    post {  // after all stages are completed, this block will run, regardless of the pipeline's success or failure, 
+        always { // this block will always run
             echo 'I will always say Hello'
-            deleteDir()
+            deleteDir() // clean up the workspace
         }
-        success {
+        success { // this block will run only if the pipeline is successful
             echo 'Hello,I will run only if the pipeline is successful'
         }
-        failure {
+        failure { // this block will run only if the pipeline fails
             echo 'Hello, this will run only if the pipeline fails'
         }
     }
