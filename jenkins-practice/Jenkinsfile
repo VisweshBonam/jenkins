@@ -7,6 +7,10 @@ pipeline {
         COURSE = "Jenkins"
     }
 
+    options {
+        timeout(time:1, unit:'SECONDS') // setting a timeout for the entire pipeline, if it exceeds 1 second, it will be aborted
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -15,9 +19,13 @@ pipeline {
                         echo 'Building..'
                         echo "The app_env is set to ${APP_ENV}"
 
-                        sh """ 
+                         // sh "..." (single command) using sh block to run a single shell command
+                        // sh """...""" (multiple commands) using sh block to run shell commands
+                        sh """
                            env
                         """
+
+                       
 
                 }
             }
