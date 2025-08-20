@@ -8,7 +8,7 @@ pipeline {
     }
 
     options {
-        timeout(time:30, unit:'MINUITES') // setting a timeout for the entire pipeline, if it exceeds 1 second, it will be aborted
+        timeout(time:30, unit:'MINUTES') // set a timeout of 30 minutes for the entire pipeline
         buildDiscarder(logRotator(numToKeepStr: '5')) // keep the last 5 builds, it will delete older builds < 5
         disableConcurrentBuilds() // disable concurrent builds, only one build can run at a time
         retry(3) // retry the pipeline up to 3 times if it fails
