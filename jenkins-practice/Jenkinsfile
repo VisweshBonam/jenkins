@@ -13,6 +13,10 @@ pipeline {
                    
                         echo 'Building..'
                         echo "The app_env is set to ${app_env}"
+
+                        sh "" // this is where you would run your build commands, e.g., sh 'mvn clean install' for a Maven project
+                           env
+                        ""
                 }
             }
         }
