@@ -17,6 +17,7 @@ pipeline {
     parameters {
         string(name: 'APP_ENV', defaultValue: 'Prod', description: 'Application Environment') // defining a string parameter with default value 'dev'
         choice(name: 'ENVIRONMENT', choices: ['dev', 'test', 'prod'], description: 'Select Environment') // defining a choice parameter with options dev, test, prod
+        booleanParam(name: 'ENABLE_FEATURE', defaultValue: true, description: 'Enable Feature Flag') // defining a boolean parameter with default value true
     }
 
     stages {
