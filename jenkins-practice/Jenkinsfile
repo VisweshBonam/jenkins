@@ -11,6 +11,12 @@ pipeline {
         timeout(time:1, unit:'SECONDS') // setting a timeout for the entire pipeline, if it exceeds 1 second, it will be aborted
         buildDiscarder(logRotator(numToKeepStr: '5')) // keep the last 5 builds, it will delete older builds < 5
         disableConcurrentBuilds() // disable concurrent builds, only one build can run at a time
+        //retry(3) // retry the pipeline up to 3 times if it fails
+    }
+
+    parameters {
+        string(name: 'APP_ENV', defaultValue: 'Prod', description: 'Application Environment') // defining a string parameter with default value 'dev'
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'test', 'prod'], description: 'Select Environment') // defining a choice parameter with options dev, test, prod
     }
 
     stages {
@@ -20,6 +26,8 @@ pipeline {
                    
                         echo 'Building..'
                         echo "The app_env is set to ${APP_ENV}"
+
+                        echo "The app_env parameters is ${params.APP_ENV}"
 
                          // sh "..." (single command) using sh block to run a single shell command
                         // sh """...""" (multiple commands) using sh block to run shell commands
