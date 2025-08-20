@@ -4,6 +4,7 @@ pipeline {
     }
     environment {
         app_env = 'dev' // setting an environment variable app_env with value 'dev'
+        course = "Jenkins"
     }
 
     stages {
@@ -17,7 +18,7 @@ pipeline {
                         sh """ 
                            env
                         """
-                        
+
                 }
             }
         }
