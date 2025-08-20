@@ -59,6 +59,7 @@ pipeline {
 
             steps {
                 echo 'Deploying....'
+                echo "Hello, ${params.PERSON}" // using the parameter defined in the input block
             }
         }
     }
