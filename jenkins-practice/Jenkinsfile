@@ -3,8 +3,8 @@ pipeline {
         label 'AGENT-1'  // run this job on the agent with label AGENT-1
     }
     environment {
-        app_env = 'dev' // setting an environment variable app_env with value 'dev'
-        course = "Jenkins"
+        APP_ENV = 'dev' // setting an environment variable app_env with value 'dev'
+        COURSE = "Jenkins"
     }
 
     stages {
@@ -13,7 +13,7 @@ pipeline {
                 script{ // using script block to run a Groovy script
                    
                         echo 'Building..'
-                        echo "The app_env is set to ${app_env}"
+                        echo "The app_env is set to ${APP_ENV}"
 
                         sh """ 
                            env
