@@ -45,6 +45,6 @@ resource "aws_route53_record" "jenkins-record" {
   zone_id = var.zone_id
   type    = "A"
   ttl     = "1"
-  records = [aws_instance.jenkins-master.public_ip]
+  records = [aws_instance.jenkins_master.public_ip]
   name    = "jenkins-master.${var.zone_name}" # jenkins-master.liveyourlife.site
 }
