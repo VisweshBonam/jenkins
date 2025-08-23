@@ -1,5 +1,5 @@
 variable "jenkins_name" {
-  default = "Jenkins"
+  default = "Jenkins-Master"
 }
 
 variable "project" {
@@ -12,7 +12,7 @@ variable "environment" {
 
 
 variable "zone_id" {
-  default = "Z1015305J4GDQ3BEDT2"
+  default = "Z012754552IHMS70NN4G"
 }
 
 variable "zone_name" {
